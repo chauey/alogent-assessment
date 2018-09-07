@@ -77,7 +77,7 @@ export class EntityStoreModule {
     // // heroDataService: HeroDataService,
     // postItDataService: PostItDataService,
     // // Inject NgrxDataToastService to start it listening
-    // toastService: NgrxDataToastService
+    toastService: NgrxDataToastService
   ) {
     // Register custom EntityDataServices
     // entityDataService.registerService('Hero', heroDataService);

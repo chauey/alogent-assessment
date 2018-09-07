@@ -49,7 +49,7 @@ export abstract class ItemComponentBase<T extends { id: any }>
       });
       this.addMode = false;
     } else {
-      this.form.reset();
+      // this.form.reset();
       this.addMode = true;
     }
   }
