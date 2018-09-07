@@ -4,6 +4,14 @@
       {{ entity.name }}
       <!-- <button mat-raised-button color="primary" id="addButton" type="button" class="btn btn-secondary" (click)="add(entity.id)"
         [attr.aria-label]="add">Add</button> -->
+        <button (click)="deleteEntity(entity)" matTooltip="Delete" mat-button mat-suffix mat-icon-button color="accent" class="delete-button"
+        aria-label="Delete">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button (click)="onSelect(entity)" matTooltip="Edit" mat-button mat-suffix mat-icon-button color="accent" class="edit-button"
+        aria-label="Edit">
+        <mat-icon>edit</mat-icon>
+      </button>
     </h3>
     <div class="card-body">
       <b>Posts</b>
