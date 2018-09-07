@@ -1,4 +1,9 @@
 import { NgModule } from '@angular/core';
+
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import {
   MatButtonModule,
   MatCheckboxModule,
@@ -19,8 +24,21 @@ import {
   MatSnackBarModule
 } from '@angular/material';
 
+import { NgSelectModule } from '@ng-select/ng-select';
+import { CrudContainerHeaderComponent } from '../admin/crud-container-header.component';
+import { FilterComponent } from './filter/filter.component';
+import { CrudContainerBaseComponent } from '../admin/crud-container-base.component';
+
 @NgModule({
+  declarations: [FilterComponent, CrudContainerHeaderComponent, CrudContainerBaseComponent],
   imports: [
+    CommonModule,
+
+    RouterModule,
+
+    FormsModule,
+    ReactiveFormsModule,
+
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
@@ -37,9 +55,18 @@ import {
     MatSortModule,
     MatTableModule,
     MatTabsModule,
-    MatToolbarModule
+    MatToolbarModule,
+
+    NgSelectModule
   ],
   exports: [
+    CommonModule,
+
+    RouterModule,
+
+    FormsModule,
+    ReactiveFormsModule,
+
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
@@ -56,7 +83,13 @@ import {
     MatSortModule,
     MatTableModule,
     MatTabsModule,
-    MatToolbarModule
+    MatToolbarModule,
+
+    NgSelectModule,
+
+    FilterComponent,
+    CrudContainerHeaderComponent,
+    CrudContainerBaseComponent
   ]
 })
 export class SharedComponentsModule {}

@@ -3,12 +3,15 @@
 		<div>
 			<span class="title">assessment</span>
 			<span></span>
-			<a mat-button [routerLink]="['/tickets']" routerLinkActive="router-link-active">
-				<span>Boards</span>
+			<a mat-button [routerLink]="['/']" routerLinkActive="router-link-active">
+				<span>Home</span>
+			</a> 
+			<a mat-button [routerLink]="['/notes']" routerLinkActive="router-link-active">
+				<span>Notes</span>
 			</a>
-			<a mat-button [routerLink]="['/templates']" routerLinkActive="router-link-active">
+			<!-- <a mat-button [routerLink]="['/notes/post-it']" routerLinkActive="router-link-active">
 				<span>Post Its</span>
-			</a>
+			</a> -->
 		</div>
 	</mat-toolbar-row>
 	<mat-toolbar-row class="row-commands">

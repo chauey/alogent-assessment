@@ -123,11 +123,11 @@
   "defaultProject": "alogent-assessment",
   "schematics": {
     "@schematics/angular:component": {
-      "prefix": "app",
+      "prefix": "ncg",
       "styleext": "css"
     },
     "@schematics/angular:directive": {
-      "prefix": "app"
+      "prefix": "ncg"
     }
   }
 }

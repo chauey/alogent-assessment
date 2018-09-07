@@ -1,0 +1,43 @@
+<crud-container-base>
+  <!-- header -->
+  <ng-container header>
+    <!-- lookups$: {{lookups$ | async | json}} -->
+
+    <crud-container-header [selectedEntity]="selectedEntity" (getEntities)="getEntities()" (enableAddMode)="enableAddMode()"
+      [listMode]="listMode$ | async" (listModeChange)="listModeChange($event)" [itemMode]="itemMode$ | async" (itemModeChange)="itemModeChange($event)"
+      [filterObserver]="filterObserver"></crud-container-header>
+  </ng-container>
+
+  <!-- list -->
+  <ng-container list>
+    <div *ngIf="filterByFkId$ | async as entities">
+      <mat-spinner *ngIf="loading$ | async;else entityList" mode="indeterminate" color="accent"></mat-spinner>
+      <ng-template #entityList>
+        <!-- table -->
+        <ncg-post-it-list-mat-table *ngIf="(listMode$ | async) === 'table'" [displayedColumns]="displayedColumns" [entities]="entities"
+          [selectedEntity]="selectedEntity" [commands]="commands" [lookups]="lookups$ | async"></ncg-post-it-list-mat-table>
+        <!-- tile -->
+        <!-- <div class='container-fluid'> -->
+          <div class='row'>
+            <div class='col-sm-12 body-content'>
+              <ncg-post-it-list *ngIf="(listMode$ | async) === 'tile'" [entities]="entities" [selectedEntity]="selectedEntity" [commands]="commands"
+                [lookups]="lookups$ | async"></ncg-post-it-list>
+            </div>
+          </div>
+        <!-- </div> -->
+      </ng-template>
+    </div>
+  </ng-container>
+
+  <!-- item -->
+  <ng-container item *ngIf="selectedEntity">
+    <!-- detail -->
+    <ncg-post-it-item *ngIf="(itemMode$ | async) === 'detail'" [entity]="selectedEntity" [commands]="commands" [lookups]="lookups$ | async" [boardId]="boardId">
+    </ncg-post-it-item>
+    <!-- modal -->
+    <!-- <ncg-post-it-item-modal #itemEntityModal *ngIf="(itemMode$ | async) === 'modal'" [entity]="selectedEntity" [commands]="commands" [lookups]="lookups$ | async">
+    </ncg-post-it-item-modal> -->
+
+  </ng-container>
+
+</crud-container-base>

@@ -1,0 +1,46 @@
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="actions" sticky>
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let e">
+                <button (click)="deleteEntity(e)" matTooltip="Delete" mat-button mat-suffix mat-icon-button color="accent" class="delete-button"
+                    aria-label="Delete">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <button (click)="onSelect(e)" matTooltip="Edit" mat-button mat-suffix mat-icon-button color="accent" class="edit-button"
+                    aria-label="Edit">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+            <td mat-cell *matCellDef="let entity"> {{entity.id}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let e"> {{e.name}} </td>
+        </ng-container>
+
+        <!-- Description Column -->
+        <ng-container matColumnDef="createdAt">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Created At </th>
+            <td mat-cell *matCellDef="let e"> {{e.createdAt | date: 'medium'}} </td>
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="codeLanguageId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Language </th>
+            <td mat-cell *matCellDef="let e"> {{ getLookupDisplay('codeLanguages', e.codeLanguageId) }} </td>
+        </ng-container> -->
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let e; columns: displayedColumns;">
+        </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+</div>

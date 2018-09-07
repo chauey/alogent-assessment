@@ -1,4 +1,4 @@
-import { Input, SimpleChanges, ViewChild } from '@angular/core';
+import { Input, SimpleChanges, ViewChild, OnChanges } from '@angular/core';
 
 import {
   MatTableDataSource,
@@ -9,7 +9,8 @@ import {
 } from '@angular/material';
 import { MasterDetailCommands } from '../master-detail-commands';
 
-export abstract class ListComponentBase<T extends { id: number | string }> {
+export abstract class ListComponentBase<T extends { id: number | string }>
+  implements OnChanges {
   @Input()
   entities: T[];
   @Input()
@@ -43,6 +44,10 @@ export abstract class ListComponentBase<T extends { id: number | string }> {
     this.commands.delete(entity);
   }
 
+  addEntity(entity: T) {
+    this.commands.add(entity);
+  }
+
   ngOnChanges(changes: SimpleChanges) {
     if (changes.entities) {
       if (!this.dataSource) {
@@ -50,7 +55,9 @@ export abstract class ListComponentBase<T extends { id: number | string }> {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       } else {
-        this.dataSource.paginator.pageIndex = 0;
+        if (this.dataSource.paginator) {
+          this.dataSource.paginator.pageIndex = 0;
+        }
         this.dataSource.data = this.entities;
       }
     }

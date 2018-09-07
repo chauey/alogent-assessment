@@ -1,0 +1,21 @@
+<div class="col-sm-12" *ngFor="let entity of entities; trackBy: byId">
+  <div class="card">
+    <h3 class="card-header">
+      <button (click)="deleteEntity(entity)" matTooltip="Delete" mat-button mat-suffix mat-icon-button color="accent" class="delete-button"
+        aria-label="Delete">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button (click)="onSelect(entity)" matTooltip="Edit" mat-button mat-suffix mat-icon-button color="accent" class="edit-button"
+        aria-label="Edit">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <!-- [{{ getLookupDisplay('boards', entity.boardId) }}]: {{ entity.text }} -->
+    </h3>
+    <div class="card-body">
+      {{ entity.text }}
+    </div>
+    <div class="card-footer text-muted">
+      <small>Created {{ entity.createdAt | date:short }}</small>
+    </div>
+  </div>
+</div>

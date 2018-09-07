@@ -10,8 +10,8 @@ export const entityMetadata: EntityMetadataMap = {
     sortComparer: sortByName // optional
   },
   PostIt: {
-    filterFn: nameFilter, // optional
-    sortComparer: sortByName // optional
+    filterFn: textFilter, // optional
+    sortComparer: sortByText // optional
   }
 };
 
@@ -32,6 +32,13 @@ export function nameFilter<T extends { name: string }>(
   return PropsFilterFnFactory(['name'])(entities, pattern);
 }
 
+export function textFilter<T extends { text: string }>(
+  entities: T[],
+  pattern: string
+) {
+  return PropsFilterFnFactory(['text'])(entities, pattern);
+}
+
 export function descriptionFilter<T extends { description: string }>(
   entities: T[],
   pattern: string
@@ -42,6 +49,10 @@ export function descriptionFilter<T extends { description: string }>(
 /** Sort Comparer to sort the entity collection by its name property */
 export function sortByName(a: { name: string }, b: { name: string }): number {
   return a.name.localeCompare(b.name);
+}
+
+export function sortByText(a: { text: string }, b: { text: string }): number {
+  return a.text.localeCompare(b.text);
 }
 
 /** Sort Comparer to sort the entity collection by its description property */

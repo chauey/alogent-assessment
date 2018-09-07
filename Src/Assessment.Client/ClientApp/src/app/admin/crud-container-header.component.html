@@ -1,0 +1,28 @@
+<div class="button-panel">
+    <!-- buttons -->
+    <!-- <button mat-raised-button color="primary" type="button" (click)="refresh()" matTooltip="Refresh the entities">Refresh</button> -->
+    <button mat-raised-button color="primary" type="button" (click)="add()" [disabled]="selectedEntity" matTooltip="Add a new entity">Add</button>
+
+    <button mat-raised-button color="primary" type="button" (click)="changeListMode('table')" [disabled]="listMode === 'table'"
+        matTooltip="table">
+        <mat-icon>view_list</mat-icon>
+    </button>
+    <button mat-raised-button color="primary" type="button" (click)="changeListMode('tile')" [disabled]="listMode === 'tile'"
+        matTooltip="tile">
+        <mat-icon>view_module</mat-icon>
+    </button>
+
+    <!-- <button mat-raised-button color="primary" type="button" (click)="changeItemMode('dialog')" [disabled]="itemMode === 'dialog'"
+        matTooltip="dialog">
+        <mat-icon>view_dialog</mat-icon>
+    </button>
+    <button mat-raised-button color="primary" type="button" (click)="changeItemMode('detail')" [disabled]="itemMode === 'detail'"
+        matTooltip="detail">
+        <mat-icon>view_detail</mat-icon>
+    </button>
+    <button mat-raised-button color="primary" type="button" (click)="changeItemMode('modal')" [disabled]="itemMode === 'modal'"
+        matTooltip="modal">
+        <mat-icon>view_modal</mat-icon>
+    </button> -->
+</div>
+<app-filter [filterObserver]="filterObserver" filterPlaceholder="Filter by each entity's name & description" class="filter-panel"></app-filter>

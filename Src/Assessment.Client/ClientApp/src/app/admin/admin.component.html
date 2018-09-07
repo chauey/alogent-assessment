@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <div>
+      <a class="ng-title-icon" href="http://angular.io" target="_blank">
+        <i></i>
+      </a>
+      <span class="title">Notes</span>
+      <span></span>
+      <a mat-button [routerLink]="['board']" routerLinkActive="router-link-active">
+        <span>Boards</span>
+      </a>
+      <!-- <a mat-button [routerLink]="['post-it']" routerLinkActive="router-link-active">
+        <span>Post Its</span>
+      </a> -->
+    </div>
+  </mat-toolbar-row>
+  <!-- <mat-toolbar-row class="row-commands">
+    <div class="footer-container">
+      <app-toggle-data-source class="commands"></app-toggle-data-source>
+    </div>
+  </mat-toolbar-row> -->
+</mat-toolbar>
+<div class="content" fxFlex="100">
+  <!-- ADMIN -->
+  <router-outlet></router-outlet>
+</div>

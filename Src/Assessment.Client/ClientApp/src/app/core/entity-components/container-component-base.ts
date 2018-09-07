@@ -1,16 +1,8 @@
-import {
-  OnInit,
-  OnDestroy,
-  ViewChild,
-} from '@angular/core';
+import { OnInit, OnDestroy, ViewChild } from '@angular/core';
 
 import { Observable, Subscription } from 'rxjs';
 
-import {
-  EntityCollectionService,
-  EntityCache,
-  Dictionary
-} from 'ngrx-data';
+import { EntityCollectionService, EntityCache, Dictionary } from 'ngrx-data';
 
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
 import { MasterDetailCommands, IdGeneratorService } from '../';
@@ -31,7 +23,7 @@ import { ItemComponentBase } from './item-component-base';
 export abstract class ContainerComponentBase<
   T extends { id: number | string },
   U extends ItemDialogComponentBase<T>,
-  V extends ItemComponentBase<T>,
+  // V extends ItemComponentBase<T>,
   W extends { [key: string]: Dictionary<any>[] }
 > implements MasterDetailCommands<T>, OnInit, OnDestroy {
   // @ViewChild('itemModal') itemModal: TemplateItemModalComponent;
@@ -39,8 +31,7 @@ export abstract class ContainerComponentBase<
   commands = this;
   dialogRef: MatDialogRef<U, any>;
   @ViewChild('itemEntityModal')
-  itemEntityModal: V;
-
+  // itemEntityModal: V;
   selectedEntity: T;
   subscription: Subscription;
 
@@ -72,8 +63,11 @@ export abstract class ContainerComponentBase<
     private idGenerator: IdGeneratorService,
     protected store: Store<EntityCache>
   ) {
-    if (this.entityCollectionService instanceof NcgEntityCollectionServiceBase)
+    if (
+      this.entityCollectionService instanceof NcgEntityCollectionServiceBase
+    ) {
       this.filterObserver = this.entityCollectionService.filterObserver;
+    }
 
     this.filteredEntities$ = this.entityCollectionService.filteredEntities$;
     this.loading$ = this.entityCollectionService.loading$;
@@ -115,7 +109,6 @@ export abstract class ContainerComponentBase<
   }
 
   abstract openDialogAndSetCommands(entity: T);
-
   abstract getDisplayedColumns();
   abstract getLooksups();
 
@@ -152,9 +145,9 @@ export abstract class ContainerComponentBase<
       this.dialogConfig = this.getDialogConfig();
       this.openDialogAndSetCommands(this.selectedEntity);
     }
-    if (this.itemMode === 'modal') {
-      (<any>this.itemEntityModal).show();
-    }
+    // if (this.itemMode === 'modal') {
+    //   (<any>this.itemEntityModal).show();
+    // }
   }
 
   update(entity: T) {
@@ -168,9 +161,9 @@ export abstract class ContainerComponentBase<
       this.dialogConfig = this.getDialogConfig();
       this.openDialogAndSetCommands(this.selectedEntity);
     }
-    if (this.itemMode === 'modal') {
-      (<any>this.itemEntityModal).show();
-    }
+    // if (this.itemMode === 'modal') {
+    //   (<any>this.itemEntityModal).show();
+    // }
   }
 
   getEntities() {

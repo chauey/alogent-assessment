@@ -1,0 +1,37 @@
+<crud-container-base>
+  <!-- header -->
+  <ng-container header>
+    <!-- lookups$: {{lookups$ | async | json}} -->
+
+    <crud-container-header [selectedEntity]="selectedEntity" (getEntities)="getEntities()" (enableAddMode)="enableAddMode()"
+      [listMode]="listMode$ | async" (listModeChange)="listModeChange($event)" [itemMode]="itemMode$ | async" (itemModeChange)="itemModeChange($event)"
+      [filterObserver]="filterObserver"></crud-container-header>
+  </ng-container>
+
+  <!-- list -->
+  <ng-container list>
+    <div *ngIf="filteredEntities$ | async as entities">
+      <mat-spinner *ngIf="loading$ | async;else entityList" mode="indeterminate" color="accent"></mat-spinner>
+      <ng-template #entityList>
+        <!-- table -->
+        <ncg-board-list-mat-table *ngIf="(listMode$ | async) === 'table'" [displayedColumns]="displayedColumns" [entities]="entities"
+          [selectedEntity]="selectedEntity" [commands]="commands" [lookups]="lookups$ | async"></ncg-board-list-mat-table>
+        <!-- tile -->
+        <ncg-board-list *ngIf="(listMode$ | async) === 'tile'" [entities]="entities" [selectedEntity]="selectedEntity" [commands]="commands"
+          [lookups]="lookups$ | async"></ncg-board-list>
+      </ng-template>
+    </div>
+  </ng-container>
+
+  <!-- item -->
+  <ng-container item *ngIf="selectedEntity">
+    <!-- detail -->
+    <ncg-board-item *ngIf="(itemMode$ | async) === 'detail'" [entity]="selectedEntity" [commands]="commands" [lookups]="lookups$ | async">
+    </ncg-board-item>
+    <!-- modal -->
+    <!-- <ncg-board-item-modal #itemEntityModal *ngIf="(itemMode$ | async) === 'modal'" [entity]="selectedEntity" [commands]="commands" [lookups]="lookups$ | async">
+    </ncg-board-item-modal> -->
+
+  </ng-container>
+
+</crud-container-base>

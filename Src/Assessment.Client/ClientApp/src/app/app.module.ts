@@ -16,17 +16,18 @@ import {
 } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from '../in-memory-data.service';
 import { CoreModule } from './core';
+import { AppRoutingModule } from './app-routing.module';
+import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     CoreModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' }
-    ]),
+    AppRoutingModule,
     SharedComponentsModule,
     AppStoreModule,
 

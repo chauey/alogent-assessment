@@ -13,8 +13,8 @@ export interface SessionState {
 
 export const initialState: SessionState = {
   dataSource: 'local',
-  itemMode: 'dialog',
-  listMode: 'table'
+  itemMode: 'dialog', // detail, dialog, modal
+  listMode: 'tile' // tile, table
 };
 
 export interface AppState {

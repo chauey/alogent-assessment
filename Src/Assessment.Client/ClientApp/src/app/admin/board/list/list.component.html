@@ -1,0 +1,45 @@
+<div class="col-sm-4" *ngFor="let entity of entities; trackBy: byId">
+  <div class="card">
+    <h3 class="card-header">
+      {{ entity.name }}
+      <!-- <button mat-raised-button color="primary" id="addButton" type="button" class="btn btn-secondary" (click)="add(entity.id)"
+        [attr.aria-label]="add">Add</button> -->
+    </h3>
+    <div class="card-body">
+      <b>Posts</b>
+      <ul>
+
+      </ul>
+      <!-- <ncg-post-it-list *ngIf="(listMode$ | async) === 'tile'" [entities]="entities" [selectedEntity]="selectedEntity" [commands]="commands"
+      [lookups]="lookups$ | async"></ncg-post-it-list> -->
+      <ncg-post-it-container [boardId]="entity.id"></ncg-post-it-container>
+    </div>
+    <div class="card-footer text-muted">
+      <small>Created {{ entity.createdAt | date:short }}</small>
+    </div>
+  </div>
+</div>
+
+<!-- 
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>{{title}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <ul class="entities">
+        <li *ngFor="let entity of entities; trackBy: byId" class="item-container">
+          <button mat-button mat-suffix mat-icon-button color="accent" class="delete-button" aria-label="Delete" (click)="deleteEntity(entity)"
+            matTooltip="Delete the entity">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <div class="selectable-item" [class.selected]="entity === selectedEntity">
+            <div class="badge">{{entity.id}}</div>
+            <div class="item-text" (click)="onSelect(entity)">
+              <div class="name">{{entity.name}}</div>
+              <div class="createdAt">{{entity.createdAt | date: 'medium'}}</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card> -->
