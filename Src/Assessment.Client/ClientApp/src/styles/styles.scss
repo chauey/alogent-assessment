@@ -1,0 +1,31 @@
+// @import 'mixin';
+
+@import "~@ng-select/ng-select/themes/material.theme.css";
+
+
+// @import '~bootstrap/scss/bootstrap-reboot';
+
+// @import '~bootstrap/scss/bootstrap-grid';
+
+// https://www.amadousall.com/the-good-parts-of-bootstrap-4-you-are-missing-in-your-angular-material-projects/
+// @import "variables";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/grid"; // add the grid
+@import "~bootstrap/scss/modal"; // add the grid
+// @import "reset";
+
+* {
+  font-family: Arial;
+}
+h2 {
+  color: #444;
+  font-weight: lighter;
+}
+html,
+body {
+  margin: 0px;
+  font-family: Arial;
+}

@@ -1,0 +1,51 @@
+﻿{
+  "info": {
+    "version": "0.0.0",
+    "title": "Assessment"
+  },
+  "definitions": {
+    "Board": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "createdAt"
+      ]
+    },
+    "PostIt": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "boardId": {
+          "type": "integer"
+        },
+        "text": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "createdAt"
+      ]
+    }
+  }
+}

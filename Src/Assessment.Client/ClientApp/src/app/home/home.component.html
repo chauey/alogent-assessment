@@ -1,8 +1,9 @@
 
-<div class="col-sm-4" *ngFor="let board of boards">
+<div class="col-sm-4" *ngFor="let board of (boards$ | async)">
   <div class="card">
     <h3 class="card-header">
-      {{ board.name }}
+      {{ board.name }}      
+      <button mat-raised-button color="primary" id="addButton" type="button" class="btn btn-secondary" (click)="add()" [attr.aria-label]="add">+</button>
     </h3>
     <div class="card-body">
       <b>Posts</b>

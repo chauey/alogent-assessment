@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+	<mat-toolbar-row>
+		<div>
+			<span class="title">assessment</span>
+			<span></span>
+			<a mat-button [routerLink]="['/tickets']" routerLinkActive="router-link-active">
+				<span>Boards</span>
+			</a>
+			<a mat-button [routerLink]="['/templates']" routerLinkActive="router-link-active">
+				<span>Post Its</span>
+			</a>
+		</div>
+	</mat-toolbar-row>
+	<mat-toolbar-row class="row-commands">
+		<div class="footer-container">
+			<app-toggle-data-source class="commands"></app-toggle-data-source>
+		</div>
+	</mat-toolbar-row>
+</mat-toolbar>
